@@ -1,0 +1,45 @@
+[
+  {
+      "type": "Mobile",
+"items":[
+{
+   "name": "Motorola",
+    "description": "Motorola Rocks.",
+    "price": 10000
+ },
+{ "name": "Lenovo",
+   "description": "Lenova Super",
+    "price": 20000
+
+},
+
+{
+  "name": "Lenovo Yoga",
+
+    "description": "Lenova Yoga",
+    "price": 20600
+
+}
+
+
+
+]
+  },
+  {
+    "type": "HeadPhone",
+   "items": [
+        {
+            "name": "Sony",
+            "description": "Sony MDR-ZX110A On-Ear",
+            "price": 20600
+
+        },
+        { "msId": 5,
+            "name": "MI  Earphones",
+            "description": "MI  Earphones Basic with Mic ",
+            "price": 50600
+
+        }
+    ]
+}
+]

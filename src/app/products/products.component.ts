@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartserviceService } from '../shared/cartservice.service';
 
 @Component({
   selector: 'app-products',
@@ -8,11 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent implements OnInit {
-
+productdata:any;
   products: any;
   cartProducts: any;
-
-  constructor(private router: Router) { }
+  popupshown:boolean=false;
+  constructor(private router: Router, private productshow:CartserviceService) { }
 
   ngOnInit() {
     let data=localStorage.getItem('cart');
@@ -22,48 +23,28 @@ export class ProductsComponent implements OnInit {
       this.cartProducts = [];
     }
 
-    this.products = [
-      {
-        id: 1,
-        title: "Samsung",
-        description: "Samsung",
-        price: 24000
-      },
-      {
-        id:2,
-        title: "Nokia",
-        description: "Nokia",
-        price:800
-      },
-      {
-        id:3,
-        title: "oppo",
-        description: "oppo",
-         price:80000
-      },
-      {
-        id:4,
-        title: "Vivo V15",
-        description: "Vivo V15",
-               price:50000
-      },
-      {
-        id:5,
-        title: "Moto E5 Plus",
-        description: "Moto E5 Plus",
-         price:40000
-      },
-      {
-        id:6,
-        title: "Nokia 2.2 2",
-        description: "Nokia 2.2 2",
-        
-        price:30000
-      }
-      
-    ]
+
+    this.showporduct();
+  }
+  showporduct(){
+    this.productshow.getProductlist().subscribe(respdata=>{
+      this.productdata=respdata;
+    });
   }
 
+  selectedItem:any;
+  openDetail(selectedItem){
+    this.popupshown=true;
+    this.selectedItem=selectedItem;
+  }
+  closePopup(){
+    this.popupshown=false;
+    this.selectedItem=null;
+  }
+
+  closePopupEvent(event){
+    this.popupshown=event;
+  }
   addToCart(index){
     let product = this.products[index];
     let cartData = [];

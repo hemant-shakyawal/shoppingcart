@@ -1,9 +1,13 @@
-<div class="container">
-  <div><h3>Product Details Page</h3></div>
+<div id="light" class="white_content">
+    <div id="selectedItem">
+        <div class="closeBtnCss" (click)="closePopup()" >Close</div>
 
- <div>Product name: {{ product.id}}</div>
- <div>product Price : {{ product.id}}</div>
- <div>Procust Description : {{ product.id}}</div>
+        <div >Product Name:{{selectedItem.item}} </div>
+        <div >Product Price{{selectedItem.price}} </div>
+        <div >Product Description :  {{selectedItem.description}}</div>
+    </div>
 
+    <button class="btn btn-primary btn-sm" >Buy Now</button>
 
-</div>
+  </div>
+  <div id="fade" class="black_overlay"></div>

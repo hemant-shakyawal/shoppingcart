@@ -10,7 +10,7 @@
             <span class="glyicon glyphicon-shopping-cart">
               Add to cart:
             </span>
-            <span class="caret">{{cartProducts.length}}</span>
+            <!-- <span class="caret">{{cartProducts.length}}</span> -->
           </a>
           <ul class="dropdown-menu dropdown-cart" role="menu">
             <li *ngFor="let item of cartProducts">
@@ -29,33 +29,40 @@
 </div>
 <hr>
 <div class="container">
-  <div class="row">    
-      <div class="col-md-4 col-centered" *ngFor="let product of products;let i=index">
-          <a [routerLink]="['/productdisplay', { id:product.id } ] ">
-            <!-- <a
-            mat-button
-            [queryParams]="{ params: item | json}"
-            routerLink="/productdisplay/{{products.id}}"
-            routerLinkActive="router-link-active"> -->
-            <!-- <a [routerLink]="['/productdisplay',product.id]">  -->
-              
-              <div class="card card-block">
-        
-          <div class="product-desc-container row">
-             
-            <div class="container"  >
-<div>{{product.title}}</div>
-<div>${{product.price}}</div>
+  <div class="row">
+      <div class="col-md-12 col-centered" *ngFor="let type of productdata;">
+        <h3 class="headerCss">{{type.type}}</h3>
 
-            </div>
-         
-          <div class="offset-md-4 col-md-4">
-              <button class="btn btn-primary btn-sm" (click)="addToCart(i)" [disabled]="product.isAdded===true">Add To Cart</button>
-            </div> 
+<div  class="col-md-4" style="float: left; padding-right:10px;  margin-bottom: 10px;" *ngFor="let item of type.items" (click)="openDetail(item)">
+    <div class="card card-block">
+
+        <div class="product-desc-container row">
+
+          <div class="container"  >
+<div >
+  <div>Product Name:{{item.name}}</div>
+  <div>Product Price:$ {{item.price}}</div>
+</div>
+
+
+
           </div>
-       
+
+    <!-- <div class="offset-md-4 col-md-4">
+            <button class="btn btn-primary btn-sm" (click)="addToCart(i)" [disabled]="product.isAdded===true">Add To Cart</button>
+          </div> -->
         </div>
-      </a>
+
+      </div>
+</div>
+
+
+
+
       </div>
   </div>
+
 </div>
+<div  id="popup" *ngIf="popupshown">
+    <app-productdisplay [selectedItem]="selectedItem" (closeEvent)="closePopupEvent($event);" ></app-productdisplay>
+    </div>

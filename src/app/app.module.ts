@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -13,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from './products/products.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductdisplayComponent} from './productdisplay/productdisplay.component';
+import { CartserviceService } from './shared/cartservice.service';
 
 
 
@@ -31,9 +34,10 @@ import { ProductdisplayComponent} from './productdisplay/productdisplay.componen
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     routes
   ],
-  providers: [
+  providers: [ CartserviceService,
   	{provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
